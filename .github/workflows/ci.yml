@@ -1,0 +1,62 @@
+name: VBace CI
+
+on:
+  push:
+    branches: [ "main", "develop" ]
+  pull_request:
+    branches: [ "main", "develop" ]
+
+jobs:
+  backend-build:
+    name: Build & Test .NET Backend
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./backend
+
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '10.0.x'
+        
+    - name: Restore dependencies
+      run: dotnet restore VBace.slnx
+      
+    - name: Build
+      run: dotnet build VBace.slnx --configuration Release --no-restore
+      
+    # Uncomment when tests are added
+    # - name: Test
+    #   run: dotnet test VBace.slnx --configuration Release --no-build --verbosity normal
+
+  frontend-build:
+    name: Build Frontend (Next.js & Vite)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./frontend
+
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Install pnpm
+      uses: pnpm/action-setup@v4
+      with:
+        # action-setup v4 reads the version directly from packageManager in package.json
+        run_install: false
+        
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '24'
+        cache: 'pnpm'
+        cache-dependency-path: './frontend/pnpm-lock.yaml'
+        
+    - name: Install dependencies
+      run: pnpm install
+      
+    - name: Build with Turborepo
+      run: pnpm run build
