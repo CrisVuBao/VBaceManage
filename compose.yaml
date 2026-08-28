@@ -27,21 +27,21 @@ services:
       timeout: 3s
       retries: 5
 
-  api:
-    build:
-      context: ./backend
-      dockerfile: src/Host/VBace.Api/Dockerfile
-    ports:
-      - "5000:8080"
-    environment:
-      - ConnectionStrings__Database=Host=postgres;Port=5432;Database=vbace_db;Username=vbace_dev;Password=vbace_dev_password
-      - ConnectionStrings__Redis=redis:6379
-      - Jwt__Secret=super-secret-key-change-in-production
-    depends_on:
-      postgres:
-        condition: service_healthy
-      redis:
-        condition: service_healthy
+#  api:
+#    build:
+#      context: ./backend
+#      dockerfile: src/Host/VBace.Api/Dockerfile
+#    ports:
+#      - "5000:8080"
+#    environment:
+#      - ConnectionStrings__Database=Host=postgres;Port=5432;Database=vbace_db;Username=vbace_dev;Password=vbace_dev_password
+#      - ConnectionStrings__Redis=redis:6379
+#      - Jwt__Secret=super-secret-key-change-in-production
+#    depends_on:
+#      postgres:
+#        condition: service_healthy
+#      redis:
+#        condition: service_healthy
 
 volumes:
   postgres_data:
