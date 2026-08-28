@@ -61,15 +61,15 @@ export function HeroSection() {
   const customEase = [0.16, 1, 0.3, 1];
 
   return (
-    <section ref={ref} className="relative min-h-[100vh] flex flex-col items-center justify-center overflow-hidden bg-[#F8FAFC] dark:bg-[#030712] transition-colors duration-700 pt-20">
-      
+    <section ref={ref} className="relative min-h-[100vh] flex flex-col items-center justify-between overflow-hidden bg-[#F8FAFC] dark:bg-[#030712] transition-colors duration-700 pt-32 pb-10">
+
       {/* Interactive Spotlight */}
       <motion.div className="pointer-events-none fixed inset-0 z-0" style={{ background: backgroundSpotlight }} />
-      
+
       {/* Glowing Orbs */}
       <div className="absolute top-[-10%] left-[10%] w-[40vw] h-[40vw] bg-[#e0f2fe] dark:bg-[#1570EF]/10 rounded-full blur-[120px] pointer-events-none"></div>
       <div className="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] bg-[#dbeafe] dark:bg-[#38BDF8]/10 rounded-full blur-[120px] pointer-events-none"></div>
-      
+
       <AnimatedGrid />
 
       {/* Floating Elements */}
@@ -77,9 +77,10 @@ export function HeroSection() {
       <FloatingBadge text="High Availability" delay={0.4} x="right-[5%]" y="top-[35%]" icon={Globe} color="bg-[#f0fdfa] text-[#0d9488] dark:bg-[#0d9488]/20" />
       <FloatingBadge text="Scale to Millions" delay={0.6} x="left-[12%]" y="bottom-[25%]" icon={Rocket} color="bg-[#fff1f2] text-[#e11d48] dark:bg-[#e11d48]/20" />
 
-      <motion.div 
+      {/* Main Centered Content */}
+      <motion.div
         style={{ y, opacity, scale }}
-        className="relative z-10 flex flex-col items-center text-center px-4 max-w-5xl w-full"
+        className="relative z-10 flex flex-1 flex-col justify-center items-center text-center px-4 max-w-5xl w-full"
       >
         <motion.div
           initial={{ opacity: 0, y: 20, scale: 0.9 }}
@@ -94,23 +95,23 @@ export function HeroSection() {
           </span>
           <span className="text-zinc-800 dark:text-zinc-200">Kỷ nguyên mới của phần mềm quản trị</span>
         </motion.div>
-        
+
         <h1 className="text-6xl md:text-8xl font-black tracking-tighter mb-8 text-zinc-900 dark:text-white leading-[1.1]">
-          <motion.span 
+          <motion.span
             initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1, duration: 1, ease: customEase }}
             className="block mb-2"
           >
             Định Hình Ý Tưởng.
           </motion.span>
-          <motion.span 
+          <motion.span
             initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 1, ease: customEase }}
             className="block text-transparent bg-clip-text bg-gradient-to-r from-[#1570EF] to-[#0ea5e9] pb-4"
           >
             Kiến Tạo Tương Lai.
           </motion.span>
         </h1>
-        
-        <motion.p 
+
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: customEase, delay: 0.5 }}
@@ -118,40 +119,44 @@ export function HeroSection() {
         >
           <strong className="text-zinc-900 dark:text-zinc-200">VBace Solopreneur Ecosystem</strong> cung cấp nền tảng toàn diện để tự động hóa, mở rộng và quản trị doanh nghiệp số của bạn với tiêu chuẩn chất lượng cao nhất.
         </motion.p>
-        
-        <motion.div 
+
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: customEase, delay: 0.7 }}
-          className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-5 w-full"
+          className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-5 w-full max-w-xl mx-auto"
         >
-          <a href="/services" className="group relative overflow-hidden flex h-14 w-full sm:w-auto items-center justify-center rounded-full bg-[#1570EF] px-10 font-bold text-white shadow-[0_15px_40px_rgba(21,112,239,0.35)] transition-all hover:shadow-[0_20px_50px_rgba(21,112,239,0.5)] hover:-translate-y-1">
+          <a href="/services" className="group relative overflow-hidden flex h-14 w-full sm:flex-1 items-center justify-center rounded-full bg-[#1570EF] px-8 font-bold text-white shadow-[0_15px_40px_rgba(21,112,239,0.35)] transition-all hover:shadow-[0_20px_50px_rgba(21,112,239,0.5)] hover:-translate-y-1">
             <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"></div>
-            <span className="mr-3 text-base">Khám phá giải pháp</span>
+            <span className="mr-2 text-[15px]">Khám phá giải pháp</span>
             <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
           </a>
-          <a href="/du-an" className="group flex h-14 w-full sm:w-auto items-center justify-center rounded-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm px-10 font-bold text-zinc-900 dark:text-white transition-all hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:-translate-y-1 hover:shadow-md">
-            <Sparkles className="mr-3 h-5 w-5 text-[#1570EF] group-hover:rotate-12 transition-transform" />
-            <span className="text-base">Dự án nổi bật</span>
+          <a href="/du-an" className="group flex h-14 w-full sm:flex-1 items-center justify-center rounded-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm px-8 font-bold text-zinc-900 dark:text-white transition-all hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:-translate-y-1 hover:shadow-md">
+            <Sparkles className="mr-2 h-5 w-5 text-[#1570EF] group-hover:rotate-12 transition-transform" />
+            <span className="text-[15px]">Dự án nổi bật</span>
           </a>
         </motion.div>
       </motion.div>
 
-      <motion.div 
+      {/* Bottom Scroll Indicator in flow */}
+      <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 1.2, ease: customEase }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 cursor-pointer group"
+        className="relative z-30 flex flex-col items-center justify-center gap-3 cursor-pointer group mt-10 pb-4"
       >
-        <span className="text-xs font-bold uppercase tracking-widest text-zinc-400 group-hover:text-[#1570EF] transition-colors">Cuộn xuống</span>
+        <span className="text-[10px] font-black uppercase tracking-widest text-zinc-400 group-hover:text-[#1570EF] transition-colors">Cuộn xuống</span>
         <div className="w-8 h-12 rounded-full border-2 border-zinc-300 dark:border-zinc-700 flex justify-center p-1 group-hover:border-[#1570EF] transition-colors">
-          <motion.div 
-            animate={{ y: [0, 16, 0] }} 
+          <motion.div
+            animate={{ y: [0, 16, 0] }}
             transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
             className="w-1.5 h-3 bg-zinc-400 group-hover:bg-[#1570EF] rounded-full transition-colors"
           />
         </div>
       </motion.div>
+
+      {/* Seamless Fade-to-White Overlay (Short & Sharp at the very bottom) */}
+      <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-white via-white/80 to-transparent dark:from-zinc-950 dark:via-zinc-950/80 pointer-events-none z-20"></div>
     </section>
   );
 }
