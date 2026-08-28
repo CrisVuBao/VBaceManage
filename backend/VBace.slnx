@@ -1,0 +1,20 @@
+<Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/BuildingBlocks/">
+    <Project Path="src/BuildingBlocks/VBace.BuildingBlocks.Application/VBace.BuildingBlocks.Application.csproj" />
+    <Project Path="src/BuildingBlocks/VBace.BuildingBlocks.Domain/VBace.BuildingBlocks.Domain.csproj" />
+    <Project Path="src/BuildingBlocks/VBace.BuildingBlocks.Infrastructure/VBace.BuildingBlocks.Infrastructure.csproj" />
+    <Project Path="src/BuildingBlocks/VBace.BuildingBlocks.Presentation/VBace.BuildingBlocks.Presentation.csproj" />
+  </Folder>
+  <Folder Name="/src/Host/">
+    <Project Path="src/Host/VBace.Api/VBace.Api.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/" />
+  <Folder Name="/src/Modules/Identity/">
+    <Project Path="src/Modules/Identity/VBace.Modules.Identity.Application/VBace.Modules.Identity.Application.csproj" />
+    <Project Path="src/Modules/Identity/VBace.Modules.Identity.Contracts/VBace.Modules.Identity.Contracts.csproj" />
+    <Project Path="src/Modules/Identity/VBace.Modules.Identity.Domain/VBace.Modules.Identity.Domain.csproj" />
+    <Project Path="src/Modules/Identity/VBace.Modules.Identity.Infrastructure/VBace.Modules.Identity.Infrastructure.csproj" />
+    <Project Path="src/Modules/Identity/VBace.Modules.Identity.Presentation/VBace.Modules.Identity.Presentation.csproj" />
+  </Folder>
+</Solution>

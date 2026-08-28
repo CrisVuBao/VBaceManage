@@ -1,0 +1,6 @@
+@VBace.Api_HostAddress = http://localhost:5023
+
+GET {{VBace.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
