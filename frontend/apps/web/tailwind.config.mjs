@@ -85,13 +85,19 @@ export default {
         "scale-in": {
           from: { opacity: 0, transform: "scale(0.95)" },
           to: { opacity: 1, transform: "scale(1)" },
+        },
+        shimmer: {
+          from: { transform: "translateX(-100%)" },
+          to: { transform: "translateX(100%)" },
         }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-in-up": "fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1)",
-        "scale-in": "scale-in 0.5s cubic-bezier(0.16, 1, 0.3, 1)"
+        "scale-in": "scale-in 0.5s cubic-bezier(0.16, 1, 0.3, 1)",
+        "spin-slow": "spin 3s linear infinite",
+        "shimmer": "shimmer 2s infinite linear"
       },
     },
   },
