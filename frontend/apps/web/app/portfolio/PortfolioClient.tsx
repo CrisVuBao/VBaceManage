@@ -22,37 +22,48 @@ type ProjectDto = {
 };
 
 // ---------------------------------------------------------
-// 1. ADVANCED 3D TILT CARD COMPONENT
+// 1. HIGH-TECH SPOTLIGHT CARD COMPONENT
 // ---------------------------------------------------------
-const TiltCard = ({ children, className }: { children: React.ReactNode, className?: string }) => {
+const TechCard = ({ children, className }: { children: React.ReactNode, className?: string }) => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
   const handleMouseMove = (e: ReactMouseEvent<HTMLDivElement>) => {
-    const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
-    const x = (e.clientX - left - width / 2) / 25; // Sensitivity
-    const y = (e.clientY - top - height / 2) / 25;
-    mouseX.set(x);
-    mouseY.set(y);
+    const { left, top } = e.currentTarget.getBoundingClientRect();
+    mouseX.set(e.clientX - left);
+    mouseY.set(e.clientY - top);
   };
 
-  const handleMouseLeave = () => {
-    mouseX.set(0);
-    mouseY.set(0);
-  };
-
-  const rotateX = useSpring(useTransform(mouseY, (y) => -y), { damping: 30, stiffness: 200 });
-  const rotateY = useSpring(useTransform(mouseX, (x) => x), { damping: 30, stiffness: 200 });
+  const backgroundTemplate = useMotionTemplate`radial-gradient(400px circle at ${mouseX}px ${mouseY}px, rgba(14, 165, 233, 0.15), transparent 80%)`;
+  const borderTemplate = useMotionTemplate`radial-gradient(300px circle at ${mouseX}px ${mouseY}px, rgba(21, 112, 239, 0.5), transparent 80%)`;
 
   return (
-    <motion.div
+    <div
       onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{ rotateX, rotateY, transformPerspective: 1000 }}
-      className={`relative ${className}`}
+      className={`group relative overflow-hidden bg-white border border-zinc-100 transition-shadow duration-700 hover:shadow-[0_30px_60px_rgba(14,165,233,0.12)] ${className}`}
     >
-      {children}
-    </motion.div>
+      {/* Animated Border Glow on Hover */}
+      <motion.div
+        className="absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+        style={{ background: borderTemplate }}
+      />
+      {/* 1px Inner Border Mask */}
+      <div className="absolute inset-[1px] z-0 bg-white rounded-[inherit] pointer-events-none"></div>
+
+      {/* Spotlight Inner Glow on Hover */}
+      <motion.div
+        className="absolute inset-0 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-[inherit]"
+        style={{ background: backgroundTemplate }}
+      />
+      
+      {/* High-tech subtle grid noise revealed on hover */}
+      <div className="absolute inset-0 z-10 opacity-0 group-hover:opacity-10 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay transition-opacity duration-500 pointer-events-none"></div>
+
+      {/* Content */}
+      <div className="relative z-20 h-full w-full">
+        {children}
+      </div>
+    </div>
   );
 };
 
@@ -209,8 +220,8 @@ export function PortfolioClient({ skills, projects }: { skills: SkillDto[], proj
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
             {skills.length > 0 ? skills.map((skill, index) => (
-              <TiltCard key={skill.id} className="h-full">
-                <motion.div variants={itemVariants} className="group h-full p-8 rounded-[2.5rem] bg-white border border-zinc-100 shadow-[0_10px_30px_rgba(0,0,0,0.03)] hover:shadow-[0_30px_60px_rgba(14,165,233,0.15)] transition-shadow duration-500 overflow-hidden relative flex flex-col items-center text-center">
+              <TechCard key={skill.id} className="h-full rounded-[2.5rem]">
+                <motion.div variants={itemVariants} className="group h-full p-8 flex flex-col items-center text-center">
                   <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-[#0ea5e9] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   
                   <div className="w-20 h-20 rounded-[1.5rem] bg-[#f8fafc] border border-zinc-100 flex items-center justify-center p-4 mb-6 group-hover:scale-110 group-hover:-translate-y-2 transition-transform duration-500 ease-[0.16,1,0.3,1] shadow-inner">
@@ -222,7 +233,7 @@ export function PortfolioClient({ skills, projects }: { skills: SkillDto[], proj
                     {skill.category}
                   </span>
                 </motion.div>
-              </TiltCard>
+              </TechCard>
             )) : (
               <p className="text-zinc-500 col-span-full text-center">Đang nạp dữ liệu...</p>
             )}
@@ -239,8 +250,8 @@ export function PortfolioClient({ skills, projects }: { skills: SkillDto[], proj
           </div>
 
           <div className="space-y-12">
-            <TiltCard>
-              <motion.div variants={itemVariants} className="group relative rounded-[2rem] bg-white border border-zinc-100 flex flex-col md:flex-row overflow-hidden shadow-[0_15px_40px_rgba(0,0,0,0.04)] hover:shadow-[0_25px_50px_rgba(21,112,239,0.1)] transition-shadow duration-700">
+            <TechCard className="rounded-[2rem]">
+              <motion.div variants={itemVariants} className="group flex flex-col md:flex-row h-full">
                 <div className="md:w-5/12 h-64 md:h-auto bg-[#F8FAFC] relative overflow-hidden flex items-center justify-center border-b md:border-b-0 md:border-r border-zinc-100 p-6">
                   {/* Abstract UI representation */}
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(14,165,233,0.1)_0%,transparent_60%)] group-hover:scale-110 transition-transform duration-[2s]"></div>
@@ -288,7 +299,7 @@ export function PortfolioClient({ skills, projects }: { skills: SkillDto[], proj
                   </a>
                 </div>
               </motion.div>
-            </TiltCard>
+            </TechCard>
           </div>
         </motion.div>
 
