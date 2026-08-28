@@ -6,6 +6,9 @@ using VBace.Modules.Identity.Infrastructure.Configuration;
 using VBace.Modules.Identity.Presentation;
 using VBace.Modules.Identity.Infrastructure.Database;
 using VBace.Modules.Identity.Application.Auth;
+using VBace.Modules.Portfolio.Application.Configuration;
+using VBace.Modules.Portfolio.Infrastructure.Configuration;
+using VBace.Modules.Portfolio.Presentation;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +20,9 @@ builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnC
 // 2. Add Identity Module Services
 builder.Services.AddIdentityApplication();
 builder.Services.AddIdentityInfrastructure(builder.Configuration);
+
+builder.Services.AddPortfolioApplication();
+builder.Services.AddPortfolioInfrastructure(builder.Configuration);
 
 // 3. Add Authentication & Authorization
 var jwtSecret = builder.Configuration["Jwt:Secret"] ?? "MySuperSecretKeyForDevelopmentOnly_ReplaceInProduction123!";
@@ -69,5 +75,6 @@ app.UseAuthorization();
 
 // 5. Map Endpoints
 app.MapIdentityEndpoints();
+app.MapPortfolioEndpoints();
 
 app.Run();

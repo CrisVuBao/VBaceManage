@@ -17,4 +17,10 @@
     <Project Path="src/Modules/Identity/VBace.Modules.Identity.Infrastructure/VBace.Modules.Identity.Infrastructure.csproj" />
     <Project Path="src/Modules/Identity/VBace.Modules.Identity.Presentation/VBace.Modules.Identity.Presentation.csproj" />
   </Folder>
+  <Folder Name="/src/Modules/Portfolio/">
+    <Project Path="src/Modules/Portfolio/VBace.Modules.Portfolio.Application/VBace.Modules.Portfolio.Application.csproj" />
+    <Project Path="src/Modules/Portfolio/VBace.Modules.Portfolio.Domain/VBace.Modules.Portfolio.Domain.csproj" />
+    <Project Path="src/Modules/Portfolio/VBace.Modules.Portfolio.Infrastructure/VBace.Modules.Portfolio.Infrastructure.csproj" />
+    <Project Path="src/Modules/Portfolio/VBace.Modules.Portfolio.Presentation/VBace.Modules.Portfolio.Presentation.csproj" />
+  </Folder>
 </Solution>

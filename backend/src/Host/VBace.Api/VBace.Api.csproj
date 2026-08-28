@@ -19,6 +19,8 @@
     <ProjectReference Include="..\..\Modules\Identity\VBace.Modules.Identity.Infrastructure\VBace.Modules.Identity.Infrastructure.csproj" />
     <ProjectReference Include="..\..\Modules\Identity\VBace.Modules.Identity.Application\VBace.Modules.Identity.Application.csproj" />
     <ProjectReference Include="..\..\Modules\Identity\VBace.Modules.Identity.Presentation\VBace.Modules.Identity.Presentation.csproj" />
+    <ProjectReference Include="..\..\Modules\Portfolio\VBace.Modules.Portfolio.Presentation\VBace.Modules.Portfolio.Presentation.csproj" />
+    <ProjectReference Include="..\..\Modules\Portfolio\VBace.Modules.Portfolio.Infrastructure\VBace.Modules.Portfolio.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
