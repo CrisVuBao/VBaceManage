@@ -58,7 +58,7 @@ export function HeroSection() {
   }, []);
   const backgroundSpotlight = useMotionTemplate`radial-gradient(800px circle at ${cursorX}px ${cursorY}px, rgba(21, 112, 239, 0.05), transparent 80%)`;
 
-  const customEase = [0.16, 1, 0.3, 1];
+  const customEase = [0.16, 1, 0.3, 1] as [number, number, number, number];
 
   return (
     <section ref={ref} className="relative min-h-[100vh] flex flex-col items-center justify-between overflow-hidden bg-[#F8FAFC] dark:bg-[#030712] transition-colors duration-700 pt-32 pb-10">
