@@ -126,7 +126,7 @@ export function HeroSection() {
           transition={{ duration: 1, ease: customEase, delay: 0.7 }}
           className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-5 w-full max-w-xl mx-auto"
         >
-          <a href="/services" className="group relative overflow-hidden flex h-14 w-full sm:flex-1 items-center justify-center rounded-full bg-[#1570EF] px-8 font-bold text-white shadow-[0_15px_40px_rgba(21,112,239,0.35)] transition-all hover:shadow-[0_20px_50px_rgba(21,112,239,0.5)] hover:-translate-y-1">
+          <a href="/tu-van" className="group relative overflow-hidden flex h-14 w-full sm:flex-1 items-center justify-center rounded-full bg-[#1570EF] px-8 font-bold text-white shadow-[0_15px_40px_rgba(21,112,239,0.35)] transition-all hover:shadow-[0_20px_50px_rgba(21,112,239,0.5)] hover:-translate-y-1">
             <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"></div>
             <span className="mr-2 text-[15px]">Khám phá giải pháp</span>
             <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />

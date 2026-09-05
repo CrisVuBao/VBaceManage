@@ -24,5 +24,17 @@ public static class PortfolioModuleEndpoints
             var result = await mediator.Send(new VBace.Modules.Portfolio.Application.Skills.Queries.GetAllSkills.GetAllSkillsQuery());
             return Results.Ok(result);
         });
+
+        group.MapPost("/leads", async (VBace.Modules.Portfolio.Application.Leads.Create.CreateLeadCommand command, IMediator mediator) => 
+        {
+            var id = await mediator.Send(command);
+            return Results.Ok(new { Id = id });
+        });
+
+        group.MapGet("/leads", async (IMediator mediator) => 
+        {
+            var result = await mediator.Send(new VBace.Modules.Portfolio.Application.Leads.Get.GetLeadsQuery());
+            return Results.Ok(result);
+        });
     }
 }

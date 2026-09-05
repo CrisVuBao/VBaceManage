@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using VBace.Modules.Portfolio.Domain.Projects;
 using VBace.Modules.Portfolio.Domain.Services;
 using VBace.Modules.Portfolio.Domain.Skills;
+using VBace.Modules.Portfolio.Domain.Leads;
 
 using VBace.Modules.Portfolio.Application.Common;
 
@@ -14,10 +15,13 @@ public class PortfolioDbContext : DbContext, IPortfolioDbContext
     public DbSet<Project> Projects { get; set; }
     public DbSet<Service> Services { get; set; }
     public DbSet<Skill> Skills { get; set; }
+    public DbSet<Lead> Leads { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.HasDefaultSchema("portfolio");
+        
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(PortfolioDbContext).Assembly);
         
         modelBuilder.Entity<Project>(builder =>
         {

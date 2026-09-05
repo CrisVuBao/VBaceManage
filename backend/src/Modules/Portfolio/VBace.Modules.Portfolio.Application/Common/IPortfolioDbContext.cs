@@ -10,5 +10,6 @@ public interface IPortfolioDbContext
     DbSet<Project> Projects { get; }
     DbSet<Service> Services { get; }
     DbSet<Skill> Skills { get; }
+    DbSet<VBace.Modules.Portfolio.Domain.Leads.Lead> Leads { get; }
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }
